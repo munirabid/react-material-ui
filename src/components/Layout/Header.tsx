@@ -13,6 +13,8 @@ import Tabs from "@mui/material/Tabs";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import InputSearch from "../UI/InputSearch";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -28,7 +30,7 @@ export default function Header(props: HeaderProps) {
       <AppBar color="primary" position="sticky" elevation={0}>
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
-            <Grid sx={{ display: { sm: "none", xs: "block" } }} item>
+            {/* <Grid sx={{ display: { sm: "none", xs: "block" } }} item>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -37,24 +39,10 @@ export default function Header(props: HeaderProps) {
               >
                 <MenuIcon />
               </IconButton>
-            </Grid>
+            </Grid> */}
             <Grid item xs />
             <Grid item>
-              <Link
-                href="/"
-                variant="body2"
-                sx={{
-                  textDecoration: "none",
-                  color: lightColor,
-                  "&:hover": {
-                    color: "common.white",
-                  },
-                }}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                Go to docs
-              </Link>
+              <InputSearch />
             </Grid>
             <Grid item>
               <Tooltip title="Alerts • No alerts">
@@ -63,6 +51,14 @@ export default function Header(props: HeaderProps) {
                 </IconButton>
               </Tooltip>
             </Grid>
+            <Grid item>
+              <Tooltip title="Alerts • No alerts">
+                <IconButton color="inherit">
+                  <SettingsOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+            <Grid item>Muhammad Muneer Abid</Grid>
             <Grid item>
               <IconButton color="inherit" sx={{ p: 0.5 }}>
                 <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />

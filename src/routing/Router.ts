@@ -1,5 +1,5 @@
-import Home from "./components/Home";
-import Unit from "./components/Unit";
+import Home from "../pages/Home";
+import Units from "../pages/Units";
 
 // other
 import { FC } from "react";
@@ -26,7 +26,7 @@ export const routes: Array<Route> = [
     title: "Unit",
     path: "/Unit",
     enabled: true,
-    component: Unit,
+    component: Units,
   },
 ];
 

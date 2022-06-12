@@ -18,34 +18,34 @@ import TimerIcon from "@mui/icons-material/Timer";
 import SettingsIcon from "@mui/icons-material/Settings";
 import PhonelinkSetupIcon from "@mui/icons-material/PhonelinkSetup";
 import { Link } from "react-router-dom";
-import Home from "../components/Home";
 import { useLocation } from "react-router-dom";
 
 const categories = [
   {
-    id: "Build",
+    id: "Components",
     children: [
       {
-        id: "Authentication",
+        id: "Functional",
         icon: <PeopleIcon />,
-        active: true,
+        path: "/functional",
       },
-      { id: "Database", icon: <DnsRoundedIcon /> },
-      { id: "Storage", icon: <PermMediaOutlinedIcon /> },
-      { id: "Hosting", icon: <PublicIcon /> },
-      { id: "Functions", icon: <SettingsEthernetIcon /> },
-      {
-        id: "Machine learning",
-        icon: <SettingsInputComponentIcon />,
-      },
+      { id: "Logical", icon: <DnsRoundedIcon />, path: "/logical" },
+      { id: "Physical", icon: <PermMediaOutlinedIcon />, path: "/physical" },
     ],
   },
   {
-    id: "Quality",
+    id: "Architecture",
     children: [
-      { id: "Analytics", icon: <SettingsIcon /> },
-      { id: "Performance", icon: <TimerIcon /> },
-      { id: "Test Lab", icon: <PhonelinkSetupIcon /> },
+      { id: "Trees", icon: <SettingsIcon />, path: "/trees" },
+      { id: "Allocations", icon: <TimerIcon />, path: "/allocations" },
+      { id: "Communality", icon: <PhonelinkSetupIcon />, path: "/communality" },
+    ],
+  },
+  {
+    id: "Definations",
+    children: [
+      { id: "Units", icon: <SettingsIcon />, path: "/units" },
+      { id: "Item Flow", icon: <TimerIcon />, path: "/itemflow" },
     ],
   },
 ];
@@ -66,9 +66,8 @@ const itemCategory = {
 };
 
 export default function Navigator(props: DrawerProps) {
-  const location = useLocation();
-  debugger;
-
+  const { pathname } = useLocation();
+  console.log(pathname);
   const { ...other } = props;
 
   return (
@@ -77,9 +76,9 @@ export default function Navigator(props: DrawerProps) {
         <ListItem
           sx={{ ...item, ...itemCategory, fontSize: 22, color: "#fff" }}
         >
-          Paperbase
+          Learning
         </ListItem>
-        <Link to="/home">
+        <Link to="/home" style={{ textDecoration: "none" }}>
           <ListItem sx={{ ...item, ...itemCategory }}>
             <ListItemIcon>
               <HomeIcon />
@@ -92,14 +91,20 @@ export default function Navigator(props: DrawerProps) {
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: "#fff" }}>{id}</ListItemText>
             </ListItem>
-            {children.map(({ id: childId, icon, active }) => (
-              <ListItem disablePadding key={childId}>
-                <ListItemButton selected={active} sx={item}>
-                  <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText>{childId}</ListItemText>
-                </ListItemButton>
-              </ListItem>
+            {children.map(({ id: childId, icon, path }) => (
+              <Link to={path} style={{ textDecoration: "none" }}>
+                <ListItem disablePadding key={childId}>
+                  <ListItemButton
+                    selected={path === pathname ? true : false}
+                    sx={item}
+                  >
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText>{childId}</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+              </Link>
             ))}
+
             <Divider sx={{ mt: 2 }} />
           </Box>
         ))}

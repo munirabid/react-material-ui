@@ -1,5 +1,5 @@
 const Unit = () => {
-  return <div>Unit</div>;
+  return <div>Unit Component</div>;
 };
 
 export default Unit;

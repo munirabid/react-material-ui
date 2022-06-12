@@ -6,12 +6,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Navigator from "./Navigator";
-import Content from "./Content";
 import Header from "./Header";
-import Unit from "../components/Unit";
 import { useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { routes as appRoutes } from "../Router";
+import BaseRouter from "../../routing/BaseRouter";
 
 function Copyright() {
   return (
@@ -207,15 +204,7 @@ export default function Paperbase() {
             component="main"
             sx={{ flex: 1, py: 6, px: 4, bgcolor: "#eaeff1" }}
           >
-            <Routes>
-              {appRoutes.map((route) => (
-                <Route
-                  key={route.key}
-                  path={route.path}
-                  element={<route.component />}
-                />
-              ))}
-            </Routes>
+            <BaseRouter />
           </Box>
           <Box component="footer" sx={{ p: 2, bgcolor: "#eaeff1" }}>
             <Copyright />
