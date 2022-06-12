@@ -95,7 +95,7 @@ export default function Navigator(props: DrawerProps) {
               <Link to={path} style={{ textDecoration: "none" }}>
                 <ListItem disablePadding key={childId}>
                   <ListItemButton
-                    selected={path === pathname ? true : false}
+                    selected={pathname.includes(path) ? true : false}
                     sx={item}
                   >
                     <ListItemIcon>{icon}</ListItemIcon>
