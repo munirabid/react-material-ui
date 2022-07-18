@@ -15,10 +15,16 @@ const UnitReducer = (state:Units = UnitsInitialState, action: Action)=>{
         case UnitActionType.ADD:
             console.log("payload", action.payload);
             console.log("redux units", state.Units);
-            return state.Units.push(action.payload);
+            return {
+                ...state,
+                    ...state.Units.concat(action.payload)
+            };
 
         case UnitActionType.DELETE:
-            return state.Units.filter(u => u.id !== action.payload)
+            return {
+                ...state,
+                ...state.Units.filter(u => u.id !== action.payload)
+            }
         default: 
             return state
     }
